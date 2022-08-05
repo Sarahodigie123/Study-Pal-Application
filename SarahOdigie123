@@ -1,33 +1,123 @@
-import kivy
 from kivy.app import App
-from kivy.uix.gridlayout import GridLayout 
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
+from kivy.uix.image import Image
 from kivy.uix.button import Button
+from kivy.uix.textinput import TextInput
+
+class StudyPal(App):
+    def build(self,**kwargs):
+        
+        
+        self.window = GridLayout()
+        #add widgets to window
+        self.window.cols = 1
+        self.window.size_hint = (0.9,0.9)
+        self.window.pos_hint={"center_x":0.5,"center_y":0.5}
 
 
-class StudyBuddyApp(GridLayout):
-  def __init__(self,**kwargs):
-    super(StudyBuddyApp,self).__init__()
-    self.cols = 4
+        #adding an image
+        self.window.add_widget(Image(source="IMG.png")) 
+        
+        
+        self.greeting = Label(
+          
+          text="Welcome to Study Pals!",
+          font_size = 35,
+          color= '#FF8B8B'
+        )
     
 
-    self.add_widget(Label(text= "School"))
-    self.sc_name = TextInput
-    self.add_widget(self.sc_name)
-    
-    self.add_widget(Label(text= "Student Name"))
-    self.s_name = TextInput
-    self.add_widget(self.s_name)
+        self.greeting = Label(
+          
+          text= "Enter your First and Last name",
+          font_size = 35,
+          color= '#FF8B8B'
+          
+          )
+        self.window.add_widget(self.greeting)
+    #text input widget
+        self.user = TextInput(
+                    multiline=False,
+                    padding_y = (20,20),
+                    
+        
+        )
+        self.window.add_widget(self.user)
+      
 
-    self.add_widget(Label(text= "Course Name"))
-    self.c_name = TextInput
-    self.add_widget(self.c_name)
 
-    self.add_widget(Label(text= "Professor"))
-    self.p_name_name = TextInput
-    self.add_widget(self.p_name)
 
-    self.press = Button(text = "Lets find your Pal!")
-    self.press.bind(on_press = self.click_me)
-    self.add_widget(self.press)
+        self.greeting = Label(
+          text="Enter the name of School",
+          font_size = 35,
+          color= '#FF8B8B'
+        )
+        self.window.add_widget(self.greeting)
+    #text input widget
+        self.user = TextInput(multiline=False,padding_y = (20,20)
+        )
+        self.window.add_widget(self.user)
+
+
+
+
+        self.greeting = Label(
+          text="Enter your Course",
+          font_size = 35,
+          color= '#FF8B8B'
+        )
+        self.window.add_widget(self.greeting)
+    #text input widget
+        self.user = TextInput(multiline=False,
+                    padding_y = (20,20))
+        self.window.add_widget(self.user)
+
+
+
+        self.greeting = Label(
+          text="Enter your Professor Name",
+          font_size = 35,
+          color= '#FF8B8B'
+          )
+        self.window.add_widget(self.greeting)
+    #text input widget
+        self.user = TextInput(multiline=False,padding_y = (20,20))
+        self.window.add_widget(self.user)
+
+
+
+        self.greeting = Label(
+          text="Enter Preferred Method of Communication",
+          font_size = 35,
+          color= '#FF8B8B'
+        )
+        self.window.add_widget(self.greeting)
+    #text input widget
+        self.user = TextInput(multiline=False,padding_y = (20,20)
+        )
+        self.window.add_widget(self.user)
+
+
+       #button widget
+        self.press = Button(text="Lets find a pal!", size_hint = (4,0.5),
+          bold = True,
+          background_color = 'FF8B8B',
+          background_normal = ""
+          )
+        self.press.bind(on_press=self.callback)
+        self.window.add_widget(self.press)
+
+        
+        return self.window
+        
+        
+
+    def callback(self,instance):
+      self.greeting.text
+      
+      
+      
+
+if __name__ == "__main__":
+  StudyPal().run()
